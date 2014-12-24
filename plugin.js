@@ -26,9 +26,9 @@
 
     function focusImage(idx) {
         console.log('focus image ' + idx);
-        document.querySelector('.fsg-image-prev').setAttribute('src', images[idx - 1] || '');
-        document.querySelector('.fsg-image-prev').setAttribute('src', images[idx]);
-        document.querySelector('.fsg-image-prev').setAttribute('src', images[idx + 1]  || '');
+        document.querySelector('.fsg-image-prev img').setAttribute('src', images[idx - 1] || '');
+        document.querySelector('.fsg-image-cur img').setAttribute('src', images[idx]);
+        document.querySelector('.fsg-image-next img').setAttribute('src', images[idx + 1]  || '');
     }
 
     function openGallery(idx, event) {
@@ -44,9 +44,5 @@
         parentAnchor.addEventListener('click', _.partial(openGallery, idx));
         return imageUrl;
     });
-    images.rollOver(idx)
-
-
-
 
 }());
