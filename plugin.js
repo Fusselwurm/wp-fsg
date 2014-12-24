@@ -68,7 +68,8 @@
             var galleryNode = document.querySelector('.fsg-images');
             console.debug('closing gallery');
             event.stopPropagation();
-            galleryNode.parentNode.removeChild(galleryNode);
+            //galleryNode.parentNode.removeChild(galleryNode);
+            galleryNode.style.display = 'none';
         }
 
         document.querySelector('.fsg-images').addEventListener('click', closeGalleryEventHandler);
@@ -82,6 +83,7 @@
         console.log(arguments);
         event.preventDefault();
         ensureGallery();
+        document.querySelector('.fsg-images').style.display = 'block';
         galleryControl.select(idx);
     }
 
