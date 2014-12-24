@@ -6,8 +6,8 @@
         linkSelector = '.gg-link.gg-colorbox',
         images,
         galleryTemplate = _.template(
-            '   <div class="fsg-image-prev"><img src="<%- prevImage %>" /></div>' +
             '   <div class="fsg-image-cur"><img src="<%- curImage %>" /></div>' +
+            '   <div class="fsg-image-prev"><img src="<%- prevImage %>" /></div>' +
             '   <div class="fsg-image-next"><img src="<%- nextImage %>" /></div>'
         ),
         ensureGallery = _.once(createGallery),
@@ -61,7 +61,6 @@
             galleryControl.next();
         }
         function prevImageEventHandler(event) {
-            alert('halololoo');
             event.stopPropagation();
             galleryControl.prev();
         }
