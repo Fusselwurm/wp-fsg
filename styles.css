@@ -1,0 +1,57 @@
+/*display-table is shice, weil die inhalte den container zwangsaufspannen (kein overflow) */
+
+.fsg-images {
+    position: fixed;
+
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    z-index: 1000;
+
+    background-color: #000000;
+}
+
+.fsg-images > div {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+}
+.fsg-images  img {
+
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+
+.fsg-image-prev {
+    width: 100px;
+    left: 0;
+}
+.fsg-image-prev img {
+    right: 0;
+}
+
+.fsg-image-next {
+    width: 100px;
+    right: 0;
+}
+.fsg-image-next img {
+    left: 0;
+}
+
+.fsg-image-cur {
+    width: 100%;
+    left: 0;
+    right: 0;
+}
+.fsg-image-cur img {
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%);
+}
+
+.fsg-image-cur img {
+    vertical-align: middle;
+}
