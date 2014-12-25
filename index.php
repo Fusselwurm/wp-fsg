@@ -1,7 +1,7 @@
 <?php
 /*
 * Plugin Name: Fucking Simple Gallery
-* Description: Foo.
+* Description: Hacky as hell. For it to work: include underscorejs, execute fusselGalleryHack() somewhere on page. Also, I deactivated the colorbox call in wp-content/plugins/grid-gallery-ready/src/GirdGallery/Galleries/views/shortcode/gallery.twig . Yikes!
 * Version: 0.1
 * Author: Fusselwurm
 * License: GPLv2
