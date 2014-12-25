@@ -1,4 +1,11 @@
 <?php
+/*
+* Plugin Name: Fucking Simple Gallery
+* Description: Foo.
+* Version: 0.1
+* Author: Fusselwurm
+* License: GPLv2
+* */
 
 $fsg_version = '2014-12-25_1';
 
