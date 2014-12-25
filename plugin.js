@@ -1,14 +1,14 @@
 /*global _*/
 
-(function () {
+function fusselGalleryHack() {
 
     var
         linkSelector = '.gg-link.gg-colorbox',
         images,
         galleryTemplate = _.template(
-            '   <div class="fsg-image-cur"><img src="<%- curImage %>" /></div>' +
+            '   <div class="fsg-image-cur"><img src="<%- curImage %>" alt="" /></div>' +
             '   <div class="fsg-image-prev"><img src="<%- prevImage %>" /></div>' +
-            '   <div class="fsg-image-next"><img src="<%- nextImage %>" /></div>'
+            '   <div class="fsg-image-next"><img src="<%- nextImage %>" alt="" /></div>'
         ),
         ensureGallery = _.once(createGallery),
         galleryControl = (function () {
@@ -17,28 +17,34 @@
                 currentImageIndex = 0,
 
                 focusCurrentImage = function () {
-
                     console.log('focus image ' + currentImageIndex);
-                    document.querySelector('.fsg-image-prev img').setAttribute('src', images[currentImageIndex - 1] || '');
+                    document.querySelector('.fsg-image-prev img').setAttribute('src', images[makeValidIndex(currentImageIndex - 1)]);
                     document.querySelector('.fsg-image-cur img').setAttribute('src', images[currentImageIndex]);
-                    document.querySelector('.fsg-image-next img').setAttribute('src', images[currentImageIndex + 1]  || '');
-                };
+                    document.querySelector('.fsg-image-next img').setAttribute('src', images[makeValidIndex(currentImageIndex + 1)]);
+                },
+                makeValidIndex = function (idx) {
+                    if (idx < 0) {
+                        idx = images.length - 1;
+                    }
+                    idx = idx % images.length;
+
+                    return idx;
+                },
+                setImageIndex = function (idx) {
+                    currentImageIndex = makeValidIndex(idx);
+                }
 
             return {
                 select: function (idx) {
-                    currentImageIndex = idx;
+                    setImageIndex(idx);
                     focusCurrentImage();
                 },
                 next: function () {
-                    currentImageIndex++;
-                    currentImageIndex = currentImageIndex % images.length;
+                    setImageIndex(currentImageIndex + 1);
                     focusCurrentImage()
                 },
                 prev: function () {
-                    currentImageIndex--;
-                    if (currentImageIndex < 0) {
-                        currentImageIndex = images.length - 1;
-                    }
+                    setImageIndex(currentImageIndex - 1);
                     focusCurrentImage();
                 }
             };
@@ -94,4 +100,4 @@
         return imageUrl;
     });
 
-}());
+}
