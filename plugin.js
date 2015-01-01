@@ -83,6 +83,11 @@ function fusselGalleryHack() {
         document.querySelector('.fsg-image-cur img').addEventListener('click', nextImageEventHandler);
         document.querySelector('.fsg-image-next').addEventListener('click', nextImageEventHandler);
 
+        window.addEventListener('keydown', function(event) {
+            if (event.keyCode === 27) {
+                closeGalleryEventHandler(event);
+            }
+        });
     }
 
     function openGallery(idx, event) {
