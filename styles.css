@@ -54,7 +54,6 @@
 .fsg-image-cur img {
     left: 50%;
     transform: translateY(-50%) translateX(-50%);
-    min-width: 50%;
     max-width: 80%;
     max-height: 100%;
 }
