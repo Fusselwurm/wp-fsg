@@ -65,7 +65,7 @@
 .fsg-images .fsg-image-cur-title {
     position: absolute;
     top: auto;
-    bottom: 0;
+    bottom: 1em;
     width: 100%;
     display: block;
     text-align: center;
