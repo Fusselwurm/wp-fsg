@@ -6,7 +6,12 @@ function fusselGalleryHack() {
         linkSelector = '.gg-link.gg-colorbox',
         images,
         galleryTemplate = _.template(
-            '   <div class="fsg-image-cur"><img src="<%- curImage %>" alt="" /></div>' +
+            '   <div class="fsg-image-cur">' +
+            '       <img src="<%- curImage %>" alt="" />' +
+            '       <div class="fsg-image-cur-title">' +
+            '           <span><%- curImageTitle %></span>' +
+            '       </div>' +
+            '   </div>' +
             '   <div class="fsg-image-prev"><img src="<%- prevImage %>" /></div>' +
             '   <div class="fsg-image-next"><img src="<%- nextImage %>" alt="" /></div>'
         ),
@@ -21,6 +26,7 @@ function fusselGalleryHack() {
                     document.querySelector('.fsg-image-prev img').setAttribute('src', images[makeValidIndex(currentImageIndex - 1)]);
                     document.querySelector('.fsg-image-cur img').setAttribute('src', images[currentImageIndex]);
                     document.querySelector('.fsg-image-next img').setAttribute('src', images[makeValidIndex(currentImageIndex + 1)]);
+                    document.querySelector('.fsg-image-cur-title span').textContent = getDescription(images[currentImageIndex]);
                 },
                 makeValidIndex = function (idx) {
                     if (idx < 0) {
@@ -48,7 +54,15 @@ function fusselGalleryHack() {
                     focusCurrentImage();
                 }
             };
-        }())
+        }());
+
+    function getDescription(imageUrl) {
+        var
+            anchorTitle = document.querySelector('a[href="' + imageUrl + '"]').getAttribute('title'),
+            imageCaption = document.querySelector('a[href="' + imageUrl + '"] figcaption span').textContent;
+        return imageCaption + ' | ' + anchorTitle;
+    }
+
 
     function createGallery() {
         var galleryNode = document.createElement('div');
@@ -57,6 +71,7 @@ function fusselGalleryHack() {
         galleryNode.innerHTML = galleryTemplate({
             prevImage: '',
             curImage: images[0],
+            curImageTitle: getDescription(images[0]),
             nextImage: images[1]
         });
         document.body.appendChild(galleryNode)

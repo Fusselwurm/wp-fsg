@@ -61,3 +61,18 @@
 .fsg-image-cur img {
     vertical-align: middle;
 }
+
+.fsg-images .fsg-image-cur-title {
+    position: absolute;
+    top: auto;
+    bottom: 0;
+    width: 100%;
+    display: block;
+    text-align: center;
+}
+
+.fsg-images .fsg-image-cur-title span {
+    display: inline-block;
+    background: white;
+    padding: 0 1em;
+}
