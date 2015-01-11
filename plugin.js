@@ -57,9 +57,14 @@ function fusselGalleryHack() {
         }());
 
     function getDescription(imageUrl) {
-        var
+        var anchorTitle, imageCaption;
+        try {
             anchorTitle = document.querySelector('a[href="' + imageUrl + '"]').getAttribute('title'),
             imageCaption = document.querySelector('a[href="' + imageUrl + '"] figcaption span').textContent;
+        } catch (e) {
+            window.console && console.debug && console.debug('could not find image title or description');
+            return '';
+        }
         return imageCaption + ' | ' + anchorTitle;
     }
 
